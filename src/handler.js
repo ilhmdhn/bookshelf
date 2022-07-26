@@ -15,12 +15,8 @@ const addBookHandler = (request, h) =>{
             const id = nanoid(16);
             const insertedAt = new Date().toISOString();
             const updatedAt = insertedAt;
-            let finished;
-            if(pageCount === readPage){
-                finished = true;
-            } else{
-                finished = false;
-            }
+            const finished = pageCount === readPage;
+
 
             if(name == '' || name === undefined){
                 const response = h.response({
@@ -87,7 +83,7 @@ const getAllBooksHandler = (request, h) =>{
       }));
         
       const response = h.response({
-        status: 'Success',
+        status: 'success',
         data:{
                 books: filterBook
             }
@@ -110,7 +106,7 @@ const getBookbyIdHandler = (request, h) =>{
     }
 
     const response = h.response({
-        status: 'Success',
+        status: 'success',
         data:{
             'book': getBookId
         }
@@ -196,7 +192,7 @@ const deleteBookHandler = (request, h) =>{
 
     books.splice(indexBook, 1);
     const response = h.response({
-        status: 'Success',
+        status: 'success',
         message: 'Buku berhasil dihapus',
     });
 
